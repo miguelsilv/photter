@@ -74,6 +74,15 @@ class FirstPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.blue,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.network("https://picsum.photos/id/237/200/300"),
+          ),
+        ],
+      ),
     );
   }
 }
