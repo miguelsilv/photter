@@ -72,7 +72,9 @@ class _NavigatorPageState extends State<NavigatorPage> {
 class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      color: Colors.blue,
+    );
   }
 }
 
