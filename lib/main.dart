@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FluentApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(),
       home: NavigatorPage(),
@@ -73,7 +74,10 @@ class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blue,
+      padding: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 10,
+      ),
       child: Column(
         children: [
           SizedBox(
@@ -88,17 +92,18 @@ class FirstPage extends StatelessWidget {
                   flex: 3,
                   child: Row(
                     children: [
-                      Flexible(flex: 6, child: ImageRounded()),
+                      Expanded(flex: 9, child: ImageRounded()),
                       Spacer(),
-                      Flexible(flex: 3, child: ImageRounded()),
+                      Expanded(flex: 6, child: ImageRounded()),
                       Spacer(),
-                      Flexible(
-                        flex: 1,
+                      Expanded(
+                        flex: 3,
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            Flexible(child: ImageRounded()),
+                            Expanded(flex: 4, child: ImageRounded()),
                             Spacer(),
-                            Flexible(child: ImageRounded()),
+                            Expanded(flex: 4, child: ImageRounded()),
                           ],
                         ),
                       ),
