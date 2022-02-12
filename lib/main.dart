@@ -76,22 +76,22 @@ class FirstPage extends StatelessWidget {
     return ScaffoldPage.scrollable(
       children: [
         GaleryRow(const [
-          "https://picsum.photos/id/1/200/300",
+          "https://picsum.photos/id/236/200/300",
           "https://picsum.photos/id/237/200/300",
-          "https://picsum.photos/id/42/200/300",
-          "https://picsum.photos/id/27/200/300",
+          "https://picsum.photos/id/238/200/300",
+          "https://picsum.photos/id/239/200/300",
+        ]),
+        GaleryRow(const [
+          "https://picsum.photos/id/29/200/300",
+          "https://picsum.photos/id/241/200/300",
         ]),
         GaleryRow(const [
           "https://picsum.photos/id/1/200/300",
-          "https://picsum.photos/id/237/200/300",
-          "https://picsum.photos/id/42/200/300",
-          "https://picsum.photos/id/27/200/300",
+          "https://picsum.photos/id/2/200/300",
+          "https://picsum.photos/id/3/200/300",
         ]),
         GaleryRow(const [
-          "https://picsum.photos/id/1/200/300",
-          "https://picsum.photos/id/237/200/300",
-          "https://picsum.photos/id/42/200/300",
-          "https://picsum.photos/id/27/200/300",
+          "https://picsum.photos/id/77/200/300",
         ]),
       ],
     );
@@ -146,41 +146,58 @@ class GaleryRow extends StatelessWidget {
             flex: 3,
             child: Row(
               children: [
-                Expanded(
-                  flex: 9,
-                  child: ImageRounded(
-                    "https://picsum.photos/id/1/200/300",
+                if (urls.length != 3) ...[
+                  if (urls.length == 1) Spacer(flex: 7),
+                  Expanded(
+                    flex: 9,
+                    child: ImageRounded(
+                      urls[0],
+                    ),
                   ),
-                ),
-                Spacer(),
-                Expanded(
-                  flex: 6,
-                  child: ImageRounded(
-                    "https://picsum.photos/id/237/200/300",
+                ],
+                if (urls.length == 2 || urls.length > 3) ...[
+                  Spacer(),
+                  Expanded(
+                    flex: 6,
+                    child: ImageRounded(
+                      urls[1],
+                    ),
                   ),
-                ),
-                Spacer(),
-                Expanded(
-                  flex: 3,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Expanded(
-                        flex: 4,
-                        child: ImageRounded(
-                          "https://picsum.photos/id/42/200/300",
-                        ),
+                ],
+                if (urls.length == 3)
+                  for (var i = 0; i < 3; i++) ...[
+                    if (i != 0) Spacer(),
+                    Expanded(
+                      flex: 6,
+                      child: ImageRounded(
+                        urls[i],
                       ),
-                      Spacer(),
-                      Expanded(
-                        flex: 4,
-                        child: ImageRounded(
-                          "https://picsum.photos/id/27/200/300",
+                    ),
+                  ],
+                if (urls.length > 3) ...[
+                  Spacer(),
+                  Expanded(
+                    flex: 3,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(
+                          flex: 4,
+                          child: ImageRounded(
+                            urls[2],
+                          ),
                         ),
-                      ),
-                    ],
+                        Spacer(),
+                        Expanded(
+                          flex: 4,
+                          child: ImageRounded(
+                            urls[3],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
+                ],
               ],
             ),
           ),
