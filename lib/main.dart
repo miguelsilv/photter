@@ -92,18 +92,38 @@ class FirstPage extends StatelessWidget {
                   flex: 3,
                   child: Row(
                     children: [
-                      Expanded(flex: 9, child: ImageRounded()),
+                      Expanded(
+                        flex: 9,
+                        child: ImageRounded(
+                          "https://picsum.photos/id/1/200/300",
+                        ),
+                      ),
                       Spacer(),
-                      Expanded(flex: 6, child: ImageRounded()),
+                      Expanded(
+                        flex: 6,
+                        child: ImageRounded(
+                          "https://picsum.photos/id/237/200/300",
+                        ),
+                      ),
                       Spacer(),
                       Expanded(
                         flex: 3,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            Expanded(flex: 4, child: ImageRounded()),
+                            Expanded(
+                              flex: 4,
+                              child: ImageRounded(
+                                "https://picsum.photos/id/42/200/300",
+                              ),
+                            ),
                             Spacer(),
-                            Expanded(flex: 4, child: ImageRounded()),
+                            Expanded(
+                              flex: 4,
+                              child: ImageRounded(
+                                "https://picsum.photos/id/27/200/300",
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -129,12 +149,16 @@ class SecondPage extends StatelessWidget {
 }
 
 class ImageRounded extends StatelessWidget {
+  final String url;
+
+  ImageRounded(this.url);
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: Image.network(
-        "https://picsum.photos/id/237/200/300",
+        url,
         fit: BoxFit.cover,
       ),
     );
