@@ -75,11 +75,38 @@ class FirstPage extends StatelessWidget {
     return Container(
       color: Colors.blue,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.network("https://picsum.photos/id/237/200/300"),
+          SizedBox(
+            height: 200,
+            child: Row(
+              children: [
+                Flexible(
+                  flex: 2,
+                  child: Container(),
+                ),
+                Flexible(
+                  flex: 3,
+                  child: Row(
+                    children: [
+                      Flexible(flex: 6, child: ImageRounded()),
+                      Spacer(),
+                      Flexible(flex: 3, child: ImageRounded()),
+                      Spacer(),
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          children: [
+                            Flexible(child: ImageRounded()),
+                            Spacer(),
+                            Flexible(child: ImageRounded()),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -92,6 +119,19 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.red,
+    );
+  }
+}
+
+class ImageRounded extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: Image.network(
+        "https://picsum.photos/id/237/200/300",
+        fit: BoxFit.cover,
+      ),
     );
   }
 }
