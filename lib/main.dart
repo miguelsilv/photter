@@ -75,9 +75,24 @@ class FirstPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScaffoldPage.scrollable(
       children: [
-        GaleryRow(),
-        GaleryRow(),
-        GaleryRow(),
+        GaleryRow(const [
+          "https://picsum.photos/id/1/200/300",
+          "https://picsum.photos/id/237/200/300",
+          "https://picsum.photos/id/42/200/300",
+          "https://picsum.photos/id/27/200/300",
+        ]),
+        GaleryRow(const [
+          "https://picsum.photos/id/1/200/300",
+          "https://picsum.photos/id/237/200/300",
+          "https://picsum.photos/id/42/200/300",
+          "https://picsum.photos/id/27/200/300",
+        ]),
+        GaleryRow(const [
+          "https://picsum.photos/id/1/200/300",
+          "https://picsum.photos/id/237/200/300",
+          "https://picsum.photos/id/42/200/300",
+          "https://picsum.photos/id/27/200/300",
+        ]),
       ],
     );
   }
@@ -110,6 +125,10 @@ class ImageRounded extends StatelessWidget {
 }
 
 class GaleryRow extends StatelessWidget {
+  final List<String> urls;
+
+  GaleryRow(this.urls);
+
   @override
   Widget build(BuildContext context) {
     return Container(
