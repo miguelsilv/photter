@@ -73,68 +73,12 @@ class _NavigatorPageState extends State<NavigatorPage> {
 class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 10,
-      ),
-      child: Column(
-        children: [
-          SizedBox(
-            height: 200,
-            child: Row(
-              children: [
-                Flexible(
-                  flex: 2,
-                  child: Container(),
-                ),
-                Flexible(
-                  flex: 3,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 9,
-                        child: ImageRounded(
-                          "https://picsum.photos/id/1/200/300",
-                        ),
-                      ),
-                      Spacer(),
-                      Expanded(
-                        flex: 6,
-                        child: ImageRounded(
-                          "https://picsum.photos/id/237/200/300",
-                        ),
-                      ),
-                      Spacer(),
-                      Expanded(
-                        flex: 3,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Expanded(
-                              flex: 4,
-                              child: ImageRounded(
-                                "https://picsum.photos/id/42/200/300",
-                              ),
-                            ),
-                            Spacer(),
-                            Expanded(
-                              flex: 4,
-                              child: ImageRounded(
-                                "https://picsum.photos/id/27/200/300",
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+    return ScaffoldPage.scrollable(
+      children: [
+        GaleryRow(),
+        GaleryRow(),
+        GaleryRow(),
+      ],
     );
   }
 }
@@ -160,6 +104,68 @@ class ImageRounded extends StatelessWidget {
       child: Image.network(
         url,
         fit: BoxFit.cover,
+      ),
+    );
+  }
+}
+
+class GaleryRow extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200,
+      margin: EdgeInsets.only(
+        bottom: 50,
+      ),
+      child: Row(
+        children: [
+          Flexible(
+            flex: 2,
+            child: Container(),
+          ),
+          Flexible(
+            flex: 3,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 9,
+                  child: ImageRounded(
+                    "https://picsum.photos/id/1/200/300",
+                  ),
+                ),
+                Spacer(),
+                Expanded(
+                  flex: 6,
+                  child: ImageRounded(
+                    "https://picsum.photos/id/237/200/300",
+                  ),
+                ),
+                Spacer(),
+                Expanded(
+                  flex: 3,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        flex: 4,
+                        child: ImageRounded(
+                          "https://picsum.photos/id/42/200/300",
+                        ),
+                      ),
+                      Spacer(),
+                      Expanded(
+                        flex: 4,
+                        child: ImageRounded(
+                          "https://picsum.photos/id/27/200/300",
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
