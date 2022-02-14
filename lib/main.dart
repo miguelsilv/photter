@@ -89,6 +89,13 @@ class FirstPage extends StatelessWidget {
           "https://picsum.photos/id/1/200/300",
           "https://picsum.photos/id/2/200/300",
           "https://picsum.photos/id/3/200/300",
+          "https://picsum.photos/id/4/200/300",
+          "https://picsum.photos/id/5/200/300",
+        ]),
+        GaleryRow(const [
+          "https://picsum.photos/id/1/200/300",
+          "https://picsum.photos/id/2/200/300",
+          "https://picsum.photos/id/3/200/300",
         ]),
         GaleryRow(const [
           "https://picsum.photos/id/77/200/300",
@@ -155,7 +162,7 @@ class GaleryRow extends StatelessWidget {
                     ),
                   ),
                 ],
-                if (urls.length == 2 || urls.length > 3) ...[
+                if (urls.length == 2 || urls.length == 4) ...[
                   Spacer(),
                   Expanded(
                     flex: 6,
@@ -174,35 +181,47 @@ class GaleryRow extends StatelessWidget {
                       ),
                     ),
                   ],
-                if (urls.length > 3) ...[
-                  Spacer(),
-                  Expanded(
-                    flex: 3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Expanded(
-                          flex: 4,
-                          child: ImageRounded(
-                            urls[2],
-                          ),
-                        ),
-                        Spacer(),
-                        Expanded(
-                          flex: 4,
-                          child: ImageRounded(
-                            urls[3],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                if (urls.length == 4) ..._buildImageRange(2, 4),
+                if (urls.length > 4) ..._buildImageRange(1, 5),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  List<Widget> _buildImageRange(int start, int end) {
+    List<String> images = urls.getRange(start, end).toList();
+    List<Widget> response = [];
+
+    for (var i = 0; i < images.length; i += 2) {
+      response.addAll([
+        Spacer(),
+        Expanded(
+          flex: 3,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                flex: 4,
+                child: ImageRounded(
+                  images[i],
+                ),
+              ),
+              Spacer(),
+              Expanded(
+                flex: 4,
+                child: ImageRounded(
+                  images[i + 1],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ]);
+    }
+
+    return response;
   }
 }
